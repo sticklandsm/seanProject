@@ -4,8 +4,8 @@
   "description": "Project for Sean",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index",
-    "dev": "nodemon server/index",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watchAll",
     "format": "prettier -w '**/*.{js,jsx,ts,tsx}'"
@@ -25,12 +25,10 @@
   "bugs": {
     "url": "https://github.com/sticklandsm/seanProject/issues"
   },
-  "homepage": "https://github.com/sticklandsm/seanProject#readme"
-  ,
+  "homepage": "https://github.com/sticklandsm/seanProject#readme",
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2"
-    
   },
   "devDependencies": {
     "@devacademy/eslint-config": "^1.8.0",
