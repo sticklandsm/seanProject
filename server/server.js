@@ -1,7 +1,11 @@
 const express = require('express')
 const hbs = require('express-handlebars')
 const fs = require('node:fs/promises')
-const { readFile, writeFile } = require('./makeSmall.js')
+const {
+  readFile,
+  writeFile,
+  randomIntFromInterval,
+} = require('./usefulFunctions')
 
 const server = express()
 
@@ -20,21 +24,17 @@ server.set('views', __dirname + '/views')
 
 server.get('/', async (req, res) => {
   try {
-    let words = await readFile()
+    const listOfWords = await readFile('FourLettersNoMatchSticks.json')
+    const wordNumber = randomIntFromInterval(
+      0,
+      Object.keys(listOfWords).length - 1
+    )
+    const currentWord = Object.keys(listOfWords)[wordNumber]
+    const currentWordDef = Object.values(listOfWords)[wordNumber]
 
-    const keys = Object.keys(words)
-    const values = Object.values(words)
-    let fourLetterWords = {}
-    let i = 0
-    keys.filter((key) => {
-      if (key.length === 4) {
-        fourLetterWords[key] = values[i]
-      }
-      i++
-    })
-    writeFile(await fourLetterWords)
-    console.log(fourLetterWords)
-    res.render('home', words)
+    console.log(currentWord, currentWordDef)
+    const currentTopic = { word: currentWord, definition: currentWordDef }
+    res.render('home', currentTopic)
   } catch (err) {
     console.log(err)
   }

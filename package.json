@@ -4,7 +4,7 @@
   "description": "Project for Sean",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "nodemon server/index.js ",
     "dev": "nodemon server/index.js",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "test": "jest --watchAll",
